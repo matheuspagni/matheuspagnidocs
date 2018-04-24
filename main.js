@@ -12,36 +12,42 @@ var db = firebase.database();
 
 // CREATE REWIEW
 
-var reviewForm = document.getElementById('formulario');
-var email   = document.getElementById('Email');
-var senha    = document.getElementById('Passwd');
+// var reviewForm = document.getElementById('formulario');
+// var email   = document.getElementById('Email');
+// var senha    = document.getElementById('Passwd');
 
-reviewForm.addEventListener('submit', (e) => {
-  console.log('1');
-  e.preventDefault();
+// reviewForm.addEventListener('submit', (e) => {
+//   console.log('1');
+//   e.preventDefault();
 
-  var id = '1'
+//   var id = '1'
 
-  db.ref().set({
-    email: email.value,
-    senha: senha.value
-  });
+//   db.ref().set({
+//     email: email.value,
+//     senha: senha.value
+//   });
 
-  email.value = '';
-  senha.value  = '';
-  console.log('2');
-});
-// var user_name = document.getElementById('user_name').value;
+//   email.value = '';
+//   senha.value  = '';
+//   console.log('2');
+// });
+
+function save() {
+  var user_name = document.getElementById('Email').value;
+  var psw = document.getElementById('Passwd').value;
+ 
+  var uid = firebase.database().ref().child('users').push().key;
   
-//    var uid = firebase.database().ref().child('users').push().key;
-   
-//    var data = {
-//     user_id: uid,
-//     user_name: user_name
-//    }
-   
-//    var updates = {};
-//    updates['/users/' + uid] = data;
-//    firebase.database().ref().update(updates);
-   
-//    alert('The user is created successfully!');
+  var data = {
+   user_id: uid,
+   user_name: user_name,
+   psw: psw
+  }
+  
+  var updates = {};
+  updates['/users/' + uid] = data;
+  firebase.database().ref().update(updates);
+  
+  alert('OK');
+
+ }
